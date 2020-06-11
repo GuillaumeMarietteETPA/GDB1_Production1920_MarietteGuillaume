@@ -1,8 +1,8 @@
 var config = {
 	type: Phaser.AUTO,
-	width: 800,
-	height: 600,
-	scene: [Title, Command, Scene0, Scene1, Scene2],
+	width: 1920,
+	height: 1080,
+	scene: [Scene0],
 	physics: {
         default: 'arcade',
         arcade: {
