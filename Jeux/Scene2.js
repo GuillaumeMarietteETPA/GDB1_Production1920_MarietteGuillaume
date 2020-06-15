@@ -4,19 +4,18 @@ class Scene2 extends Phaser.Scene{
 }
 
 init(data){
-	var player;
+	
 	
 }
 
 
 preload(){
-	this.load.image('background','assets/FondTaupe.png');
+	
 	
 }
 
 create(){
-	
-	
+	this.add.image(960,540,'taupe2');
 	
 	
 	
