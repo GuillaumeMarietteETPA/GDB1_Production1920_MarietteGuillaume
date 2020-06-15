@@ -12,6 +12,8 @@ init(data){
 
 
 preload(){
+	this.load.image('taupe2','assets/FondTaupe.png');
+	this.load.spritesheet('taupeS','assets/taupeS.png',{frameWidth: 250, frameHeight: 277});
 	this.load.image('background','assets/Fond Saut.png');
 	this.load.image('sol','assets/Sautsol.png');
 	this.load.image('paille','assets/BDP2.png');
@@ -87,7 +89,7 @@ update(){
 		if (this.player.body.touching.down) {
 			this.player.setVelocityY(-1000);
 			this.player.anims.play('jump', true);
-											//this.scene.start('Scene2',{vie: this.vie, niv: this.niv});
+											this.scene.start('Scene2',{vie: this.vie, niv: this.niv});
 			}
 		})
 	

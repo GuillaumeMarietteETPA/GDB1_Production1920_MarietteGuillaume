@@ -14,9 +14,9 @@ init(data){
 
 preload(){
 	this.load.image('transi','assets/Ftransition.png');
-	this.load.image('taupe2','assets/FondTaupe.png');
+	
 	this.load.image('fall2','assets/FondFall2.png');
-	this.load.image('taupe','assets/FondTaupe.png');
+	
 	this.load.image('hom2','assets/persofall.png');
 	this.load.spritesheet('losange1','assets/losange.png',{frameWidth: 354, frameHeight: 450});
 	
