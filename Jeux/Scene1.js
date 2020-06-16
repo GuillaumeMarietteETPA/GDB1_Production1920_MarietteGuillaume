@@ -15,6 +15,7 @@ init(data){
 	console.log('init', data);
     this.vie = data.vie;
 	this.niv = data.niv;
+	this.score = data.score;
 }
 
 
@@ -75,12 +76,13 @@ create(){
 	
 	function WinPass(homme2, fallwin){
 		this.winText = this.add.text(960,540, 'Win !', {fontSize: '100px', fill:'#000'}).setOrigin(0.5);
+		this.score += 100;
 		
-			this.time.addEvent({
+		this.time.addEvent({
 			delay: 1300,
 			callback: ()=>{
 			this.niv = 2;
-			this.scene.start('transition',{vie: this.vie, niv: this.niv});
+			this.scene.start('transition',{vie: this.vie, niv: this.niv, score: this.score});
 			console.log("Transition");
 			},
 			loop: false

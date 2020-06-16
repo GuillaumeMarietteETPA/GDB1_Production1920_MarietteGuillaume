@@ -8,12 +8,14 @@ init(data){
 	var cursors;
 	var niv;
 	var vie;
+	
 }
 
 
 preload(){
 	this.load.image('taupe2','assets/FondTaupe.png');
 	this.load.spritesheet('taupeS','assets/taupeS.png',{frameWidth: 250, frameHeight: 277});
+	this.load.spritesheet('taupeR','assets/taupeR.png',{frameWidth: 250, frameHeight: 277});
 	this.load.image('background','assets/Fond Saut.png');
 	this.load.image('sol','assets/Sautsol.png');
 	this.load.image('paille','assets/BDP2.png');
@@ -32,7 +34,7 @@ create(){
 	this.sol = this.physics.add.staticGroup();
 	this.sol.create(2721,835,'sol');
 	
-	
+	var score = 0;
 	
 	this.paille = this.physics.add.sprite(2500, 703, 'paille');
 	this.paille.setVelocityX(-900);
@@ -61,15 +63,18 @@ create(){
 	this.win.body.setAllowGravity(false);
 	this.win.setVelocityX(-900);
 	this.physics.add.overlap(this.player, this.win, WinPass, null, this);
-
+	
+	this.tp = 0;
+	
 	function WinPass(Player, Win){
 		this.winText = this.add.text(960,540, 'Win !', {fontSize: '100px', fill:'#000'}).setOrigin(0.5);
 		this.vie = 3;
 		this.niv = 1;
+		this.score += 100;
 			this.time.addEvent({
 			delay: 1300,
 			callback: ()=>{
-			this.scene.start('transition',{vie: this.vie, niv: this.niv});
+			this.scene.start('transition',{vie: this.vie, niv: this.niv, score: this.score});
 			console.log("Transition");
 			},
 			loop: false
@@ -89,7 +94,7 @@ update(){
 		if (this.player.body.touching.down) {
 			this.player.setVelocityY(-1000);
 			this.player.anims.play('jump', true);
-											this.scene.start('Scene2',{vie: this.vie, niv: this.niv});
+							this.scene.start('Scene2',{vie: this.vie, niv: this.niv});
 			}
 		})
 	
@@ -117,7 +122,7 @@ function hitPlayer(Player, Paille){
     delay: 1300,
     callback: ()=>{
        
-	   this.scene.start('transition',{vie: this.vie, niv: this.niv});
+	   this.scene.start('transition',{vie: this.vie, niv: this.niv, score: this.score});
 		console.log("Transition");
     },
     loop: false

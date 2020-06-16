@@ -4,11 +4,13 @@ class transition extends Phaser.Scene{
 }
 
 init(data){
+	var score;
+	var scoreText;
 	
 	console.log('init', data);
     this.vie = data.vie;
 	this.niv = data.niv;
-	
+	this.score = data.score;
 }
 
 
@@ -41,6 +43,7 @@ create(){
 		frameRate: 20
 	});	
 	
+	this.scoreText = this.add.text(200,800, 'Score: ', {fontSize: '150px', fill:'#000'});
 	
 
 
@@ -50,6 +53,9 @@ create(){
 
 
 update(){
+	
+	this.scoreText.setText('Score: ' + this.score);
+	
 	
 	//sytème de vie
 		if(this.vie == 2) {
@@ -90,14 +96,14 @@ update(){
 
 		if(this.niv == 1) {
 			this.transi.on("pointerup",()=>{
-			this.scene.start('Scene1',{vie: this.vie, niv: this.niv});
+			this.scene.start('Scene1',{vie: this.vie, niv: this.niv, score: this.score});
 			console.log("Scene1");
 		})
 		}
 		
 		if(this.niv == 2) {
 			this.transi.on("pointerup",()=>{
-			this.scene.start('Scene2',{vie: this.vie, niv: this.niv});
+			this.scene.start('Scene2',{vie: this.vie, niv: this.niv, score: this.score});
 			console.log("Scene2");
 		})
 		}
