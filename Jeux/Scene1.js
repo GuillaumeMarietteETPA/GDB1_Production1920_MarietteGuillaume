@@ -5,7 +5,7 @@ class Scene1 extends Phaser.Scene{
 			physics: {
 				default: 'arcade',
 				arcade: {
-					gravity: { y: 200 }
+					gravity: { y: 300 }
 				}
 			}
 		});
@@ -115,14 +115,14 @@ update(){
 function hitHomme(homme2, caisse){
 	this.vie --;
 	this.niv = 2;
-	this.deathText = this.add.text(960,540, 'Perdu !', {fontSize: '100px', fill:'#000'}).setOrigin(0.5);
+	this.deathText = this.add.text(960,540, 'Lose !', {fontSize: '100px', fill:'#000'}).setOrigin(0.5);
 	this.physics.pause();
 	this.gameOver=true;
 	
 	this.time.addEvent({
     delay: 1300,
     callback: ()=>{      
-	   this.scene.start('transition',{vie: this.vie, niv: this.niv});
+	   this.scene.start('transition',{vie: this.vie, niv: this.niv, score: this.score});
 		console.log("Transition");
     },
     loop: false

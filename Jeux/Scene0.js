@@ -34,7 +34,7 @@ create(){
 	this.sol = this.physics.add.staticGroup();
 	this.sol.create(2721,835,'sol');
 	
-	var score = 0;
+	this.score = 0;
 	
 	this.paille = this.physics.add.sprite(2500, 703, 'paille');
 	this.paille.setVelocityX(-900);
@@ -64,13 +64,14 @@ create(){
 	this.win.setVelocityX(-900);
 	this.physics.add.overlap(this.player, this.win, WinPass, null, this);
 	
-	this.tp = 0;
+	
 	
 	function WinPass(Player, Win){
 		this.winText = this.add.text(960,540, 'Win !', {fontSize: '100px', fill:'#000'}).setOrigin(0.5);
 		this.vie = 3;
 		this.niv = 1;
-		this.score += 100;
+	this.physics.pause();
+	this.score += 100;
 			this.time.addEvent({
 			delay: 1300,
 			callback: ()=>{
@@ -94,7 +95,7 @@ update(){
 		if (this.player.body.touching.down) {
 			this.player.setVelocityY(-1000);
 			this.player.anims.play('jump', true);
-							this.scene.start('Scene2',{vie: this.vie, niv: this.niv});
+							//this.scene.start('Scene2',{vie: this.vie, niv: this.niv});
 			}
 		})
 	
@@ -114,7 +115,7 @@ update(){
 function hitPlayer(Player, Paille){
 	this.vie = 2;
 	this.niv = 1;
-	this.deathText = this.add.text(960,540, 'Perdu !', {fontSize: '100px', fill:'#000'}).setOrigin(0.5);
+	this.deathText = this.add.text(960,540, 'Lose !', {fontSize: '100px', fill:'#000'}).setOrigin(0.5);
 	this.physics.pause();
 	this.gameOver=true;
 	

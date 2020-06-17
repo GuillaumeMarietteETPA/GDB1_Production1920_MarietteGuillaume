@@ -4,7 +4,6 @@ class transition extends Phaser.Scene{
 }
 
 init(data){
-	var score;
 	var scoreText;
 	
 	console.log('init', data);
@@ -44,6 +43,7 @@ create(){
 	});	
 	
 	this.scoreText = this.add.text(200,800, 'Score: ', {fontSize: '150px', fill:'#000'});
+	
 	
 
 
